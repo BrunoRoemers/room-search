@@ -1,2 +1,3 @@
-const func = (str: string) => `${str}!!!`;
-func("Hello, world");
+(async () => {
+  alert("hello");
+})();
