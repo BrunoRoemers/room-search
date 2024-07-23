@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "prebuild": "mkdir -p netlify/functions && echo $GOOGLE_APPLICATION_CREDENTIALS_BASE64 | base64 --decode > netlify/functions/secrets.json",
+    "prebuild": "echo $GOOGLE_APPLICATION_CREDENTIALS_BASE64 | base64 --decode > secrets.json",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
