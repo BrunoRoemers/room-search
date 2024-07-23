@@ -19,6 +19,7 @@ secrets.json
 
 # production
 /build
+/public/bookmarklet.js
 
 # misc
 .DS_Store
