@@ -2,6 +2,7 @@
 
 # secrets
 secrets.json
+.env.local
 
 # dependencies
 /node_modules
