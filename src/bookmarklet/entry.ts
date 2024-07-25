@@ -1,13 +1,11 @@
-const bookmarkletRootId = "rsb-root";
+interface Data {
+  secret: string;
+  rating: number;
+}
 
-const createRoot = (): Node => {
-  const root = document.createElement("div");
-  root.id = bookmarkletRootId;
-  return root;
-};
-
-const createCircle = (): Node => {
+const createCircle = (rating: number): Node => {
   const circle = document.createElement("div");
+  circle.textContent = rating.toString();
   circle.style.position = "fixed";
   circle.style.backgroundColor = "green";
   circle.style.top = "10px";
@@ -18,9 +16,9 @@ const createCircle = (): Node => {
   return circle;
 };
 
-const root = createRoot();
-root.appendChild(createCircle());
-
-const existingRoot = document.getElementById(bookmarkletRootId);
-if (existingRoot) existingRoot.remove();
-document.body.appendChild(root);
+const rootId = process.env.NEXT_PUBLIC_BOOKMARKLET_ROOT_ID!;
+const root = document.getElementById(rootId);
+if (root) {
+  const data = root.dataset as unknown as Data;
+  root.appendChild(createCircle(data.rating));
+}
