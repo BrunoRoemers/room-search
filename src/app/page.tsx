@@ -1,12 +1,17 @@
 import Bookmarklet from "./components/bookmarklet";
 
+const bookmarkletScriptId = "rsb-script";
+
 const generateBookmarkletCode = (secret: string, rating: number) =>
   `javascript:(function(){
     window.ROOM_SEARCH_DATA = {
       secret: '${secret}',
       rating: ${rating},
     };
+    const existingScript = document.getElementById("${bookmarkletScriptId}");
+    if (existingScript) existingScript.remove();
     const script = document.createElement("script");
+    script.id = "${bookmarkletScriptId}";
     script.src="${process.env.NEXT_PUBLIC_BASE_URL}/bookmarklet.js";
     document.body.appendChild(script);
   })()`;
