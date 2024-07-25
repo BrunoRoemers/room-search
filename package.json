@@ -1,11 +1,12 @@
 {
   "name": "room-search",
   "version": "0.1.0",
+  "type": "module",
   "private": true,
   "scripts": {
     "dev": "concurrently 'npm:dev:next' 'npm:dev:bookmarklet'",
     "dev:next": "next dev",
-    "dev:bookmarklet": "rollup src/bookmarklet/entry.ts --watch --file public/bookmarklet.js --plugin typescript",
+    "dev:bookmarklet": "rollup --config --watch",
     "prebuild": "./prebuild.sh",
     "build": "next build",
     "start": "next start",

@@ -1,3 +1,3 @@
-const test = "hello from test2";
+const test = "hello from test!";
 
 export default test;
