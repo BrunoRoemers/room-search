@@ -1,3 +1,1 @@
-import test from "./test";
-
-alert(test);
+alert(process.env.NEXT_PUBLIC_BASE_URL);
