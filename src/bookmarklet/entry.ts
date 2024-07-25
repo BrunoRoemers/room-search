@@ -7,6 +7,7 @@ const createCircle = (rating: number): Node => {
   const circle = document.createElement("div");
   circle.textContent = rating.toString();
   circle.style.position = "fixed";
+  circle.style.zIndex = "99999";
   circle.style.backgroundColor = "green";
   circle.style.top = "10px";
   circle.style.right = "10px";
