@@ -1,6 +1,6 @@
 import createCircle from "./create-circle";
 
-const progressIndicator = async <T>(promise: Promise<T>): Promise<Node> => {
+const progressIndicator = <T>(promise: Promise<T>): Node => {
   const inProgressCircle = createCircle("orange");
 
   const wrapper = document.createElement("div");
