@@ -1,10 +1,9 @@
 import createCircle from "./create-circle";
 
-const progressIndicator = <T>(promise: Promise<T>): Node => {
-  const inProgressCircle = createCircle("orange");
-
+const createProgressIndicator = <T>(promise: Promise<T>): Node => {
   const wrapper = document.createElement("div");
-  wrapper.appendChild(inProgressCircle);
+
+  wrapper.appendChild(createCircle("orange"));
 
   promise
     .then(() => wrapper.replaceChildren(createCircle("green")))
@@ -14,4 +13,4 @@ const progressIndicator = <T>(promise: Promise<T>): Node => {
   return wrapper;
 };
 
-export default progressIndicator;
+export default createProgressIndicator;
