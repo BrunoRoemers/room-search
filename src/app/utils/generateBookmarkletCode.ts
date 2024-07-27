@@ -6,6 +6,7 @@ const generateBookmarkletCode = (secret: string, rating: number) =>
     root.dataset.rating = ${rating};
 
     const script = document.createElement("script");
+    script.type = 'module';
     script.src="${process.env.NEXT_PUBLIC_BASE_URL}/bookmarklet.js";
     root.appendChild(script);
 

@@ -1,3 +1,4 @@
+import nodeResolve from "@rollup/plugin-node-resolve";
 import replace from "@rollup/plugin-replace";
 import typescript from "@rollup/plugin-typescript";
 import dotenv from "dotenv";
@@ -15,12 +16,14 @@ const publicEnvVarReplacements = Object.fromEntries(
 const config = {
   input: "src/bookmarklet/entry.ts",
   output: {
-    format: "iife",
+    format: "module",
     file: "public/bookmarklet.js",
   },
   plugins: [
+    nodeResolve(),
     typescript({
       outputToFilesystem: false,
+      include: ["src/bookmarklet/**.ts", "src/shared/**.ts"],
     }),
     replace({
       preventAssignment: true,
