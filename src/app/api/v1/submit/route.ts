@@ -1,12 +1,15 @@
 import { Data } from "@/models/data";
+import { tryDeserializeUsers } from "@/models/user";
 import { google } from "googleapis";
 import { NextResponse } from "next/server";
-import getValidSecrets from "../utils/getValidSecrets";
 
 export async function POST(request: Request) {
   const data = Data.parse(await request.json());
 
-  if (!getValidSecrets().includes(data.secret)) {
+  const users = tryDeserializeUsers(process.env.API_USERS_BASE64!);
+  const currentUser = users.find((u) => u.secret === data.secret);
+  console.log(`current user: ${currentUser?.name}`);
+  if (!currentUser) {
     return NextResponse.json({ message: "Invalid secret" }, { status: 401 });
   }
 
