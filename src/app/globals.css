@@ -8,6 +8,6 @@ a:focus, button:focus, input:focus {
 }
 
 /* configure input styles for entire app */
-input {
+input, textarea {
   @apply bg-transparent placeholder-lime-700;
 }
