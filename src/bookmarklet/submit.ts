@@ -4,10 +4,18 @@ export interface Data {
 }
 
 const submitCurrentPage = async (data: Data) => {
-  // TEMP
-  return new Promise((res, rej) =>
-    setTimeout(() => (Math.random() > 0.2 ? res(null) : rej(null)), 1000)
-  );
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/submit`, {
+    method: "POST",
+    body: JSON.stringify({}),
+  });
+
+  if (!res.ok) {
+    const msg = `Failed to submit: ${res.status} ${res.statusText}`;
+    console.error(msg, res);
+    throw new Error(msg);
+  }
+
+  return res;
 };
 
 export default submitCurrentPage;
