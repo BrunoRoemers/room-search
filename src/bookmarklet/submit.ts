@@ -1,7 +1,4 @@
-export interface Data {
-  secret: string;
-  rating: number;
-}
+import type { Data } from "@/shared/data";
 
 const submitCurrentPage = async (data: Data) => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/submit`, {
