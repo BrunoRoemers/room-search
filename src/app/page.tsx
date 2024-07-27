@@ -38,7 +38,8 @@ const Home = () => {
           <ol className="space-y-2">
             <li>Bookmark each of the links above.</li>
             <li>Search for an apartment.</li>
-            <li>Click one of the bookmarks.</li>
+            <li>Click on one of the bookmarks.</li>
+            <li>Watch the top-right corner.</li>
             <li>
               Check out this{" "}
               <a
