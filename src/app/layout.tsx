@@ -18,10 +18,10 @@ export default function RootLayout({
     <html lang="en" className="h-full">
       <body className={`${inter.className} h-full`}>
         <div className="h-full flex flex-col bg-black text-lime-400 text-center font-mono">
-          <div className="grow flex justify-center items-center">
-            {children}
+          <div className="grow flex justify-center items-stretch overflow-auto p-20">
+            <div className="min-h-full h-min flex items-center">{children}</div>
           </div>
-          <div className="text-lime-700 text-xs pb-4">
+          <div className="text-lime-700 text-xs p-4">
             <a
               target="_blank"
               rel="noopener noreferrer"
