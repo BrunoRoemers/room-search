@@ -26,7 +26,7 @@ export async function POST(request: Request) {
     range: process.env.SHEET_RANGE,
     valueInputOption: "USER_ENTERED",
     requestBody: {
-      values: [["hello world", "123"]],
+      values: [[currentUser.name, input.url, input.rating]],
     },
   });
 
