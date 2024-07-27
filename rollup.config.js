@@ -16,7 +16,7 @@ const publicEnvVarReplacements = Object.fromEntries(
 const config = {
   input: "src/bookmarklet/entry.ts",
   output: {
-    format: "module",
+    format: "iife",
     file: "public/bookmarklet.js",
   },
   plugins: [
