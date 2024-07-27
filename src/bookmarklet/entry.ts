@@ -2,7 +2,7 @@ import createProgressIndicator from "./create-progress-indicator";
 import submitCurrentPage from "./submit";
 import createLink from "./create-link";
 import createPositionedContainer from "./create-positioned-container";
-import { Data } from "@/shared/data";
+import { Data } from "@/models/data";
 
 const rootId = process.env.NEXT_PUBLIC_BOOKMARKLET_ROOT_ID!;
 const root = document.getElementById(rootId)!;

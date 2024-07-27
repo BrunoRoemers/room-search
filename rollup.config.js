@@ -23,7 +23,7 @@ const config = {
     nodeResolve(),
     typescript({
       outputToFilesystem: false,
-      include: ["src/bookmarklet/**.ts", "src/shared/**.ts"],
+      include: ["src/bookmarklet/**.ts", "src/models/**.ts"],
     }),
     replace({
       preventAssignment: true,

@@ -1,4 +1,4 @@
-import { Data } from "@/shared/data";
+import { Data } from "@/models/data";
 import { google } from "googleapis";
 import { NextResponse } from "next/server";
 import getValidSecrets from "../utils/getValidSecrets";
