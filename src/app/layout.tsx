@@ -22,6 +22,10 @@ export default function RootLayout({
             <div className="min-h-full h-min flex items-center">{children}</div>
           </div>
           <div className="text-lime-700 text-xs p-4">
+            <a href="/">home</a>
+            <span> · </span>
+            <a href="/users">configure users</a>
+            <span> · </span>
             <a
               target="_blank"
               rel="noopener noreferrer"
