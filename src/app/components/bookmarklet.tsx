@@ -5,7 +5,7 @@ interface Props {
 
 const Bookmarklet = ({ label, code }: Props) => {
   const html = `<a
-      className="underline hover:decoration-wavy text-xl"
+      class="underline hover:decoration-wavy text-xl"
       href="${encodeURI(code)}"
     >${label}</a>`;
 
