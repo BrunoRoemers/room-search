@@ -20,7 +20,7 @@ const Home = () => {
         <input
           autoFocus={true}
           type="password"
-          className="bg-transparent placeholder-lime-700 border-none w-[7.2rem]"
+          className="bg-transparent w-[7.2rem]"
           placeholder="enter secret"
           onKeyUp={handleKeyUp}
         />
