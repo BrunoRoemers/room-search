@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* configure outline styles for entire app */
+a:focus, button:focus, input:focus {
+  @apply outline-dotted outline-1 outline-lime-700 outline-offset-[0.4em];
+}
+
+/* configure input styles for entire app */
+input {
+  @apply bg-transparent placeholder-lime-700;
+}

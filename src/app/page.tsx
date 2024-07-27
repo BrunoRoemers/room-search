@@ -18,8 +18,9 @@ const Home = () => {
       <h1 className="text-3xl">Room Search</h1>
       {secret === null ? (
         <input
+          autoFocus={true}
           type="password"
-          className="bg-black text-center"
+          className="bg-transparent placeholder-lime-700 border-none w-[7.2rem]"
           placeholder="enter secret"
           onKeyUp={handleKeyUp}
         />
