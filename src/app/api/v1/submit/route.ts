@@ -1,10 +1,15 @@
 import { Data } from "@/shared/data";
 import { google } from "googleapis";
 import { NextResponse } from "next/server";
+import getValidSecrets from "../utils/getValidSecrets";
 
 export async function POST(request: Request) {
   const data = Data.parse(await request.json());
-  // TODO validate secret
+
+  if (!getValidSecrets().includes(data.secret)) {
+    return NextResponse.json({ message: "Invalid secret" }, { status: 401 });
+  }
+
   const auth = await google.auth.getClient({
     scopes: ["https://www.googleapis.com/auth/spreadsheets"],
   });
