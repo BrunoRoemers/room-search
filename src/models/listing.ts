@@ -1,9 +1,8 @@
 import { z } from "zod";
+import { ScrapedListing } from "./scraped-listing";
 
-export const Listing = z.object({
+export const Listing = ScrapedListing.extend({
   addedBy: z.string(),
-  id: z.string(),
-  url: z.string().url(),
   rating: z.number(),
 });
 

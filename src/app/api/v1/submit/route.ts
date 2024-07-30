@@ -1,9 +1,11 @@
 import { ApiSubmitInput } from "@/models/api-submit-input";
 import { tryDeserializeUsers } from "@/models/user";
 import GoogleSheetsListingService from "@/services/listing/google-sheets-listing-service";
+import ImmowebScrapingService from "@/services/scraping/immoweb-scraping-service";
 import { NextResponse } from "next/server";
 
 const listingService = new GoogleSheetsListingService();
+const scrapingService = new ImmowebScrapingService();
 
 export async function POST(request: Request) {
   const input = ApiSubmitInput.parse(await request.json());
@@ -18,10 +20,11 @@ export async function POST(request: Request) {
     return NextResponse.json({ message: "Invalid secret" }, { status: 401 });
   }
 
+  const scrapedListing = await scrapingService.scrape(input.url);
+
   const response = await listingService.add({
-    id: "TODO",
+    ...scrapedListing,
     addedBy: currentUser.name,
-    url: input.url,
     rating: input.rating,
   });
 
