@@ -1,7 +1,9 @@
 import { ApiSubmitInput } from "@/models/api-submit-input";
 import { tryDeserializeUsers } from "@/models/user";
-import { google } from "googleapis";
+import GoogleSheetsListingService from "@/services/listing/google-sheets-listing-service";
 import { NextResponse } from "next/server";
+
+const listingService = new GoogleSheetsListingService();
 
 export async function POST(request: Request) {
   const input = ApiSubmitInput.parse(await request.json());
@@ -16,18 +18,11 @@ export async function POST(request: Request) {
     return NextResponse.json({ message: "Invalid secret" }, { status: 401 });
   }
 
-  const auth = await google.auth.getClient({
-    scopes: ["https://www.googleapis.com/auth/spreadsheets"],
-  });
-  const sheets = google.sheets({ version: "v4", auth });
-
-  const response = await sheets.spreadsheets.values.append({
-    spreadsheetId: process.env.NEXT_PUBLIC_SHEET_ID,
-    range: process.env.SHEET_RANGE,
-    valueInputOption: "USER_ENTERED",
-    requestBody: {
-      values: [[currentUser.name, input.url, input.rating]],
-    },
+  const response = await listingService.add({
+    id: "TODO",
+    addedBy: currentUser.name,
+    url: input.url,
+    rating: input.rating,
   });
 
   return NextResponse.json(
