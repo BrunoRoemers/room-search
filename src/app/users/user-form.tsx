@@ -1,5 +1,7 @@
 import type { User } from "@/models/user";
 import PasswordField from "./password-field";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
 export interface Props {
   user: User;
@@ -27,7 +29,9 @@ const UserForm = ({ user, setUser }: Props) => {
           placeholder="secret"
         />
       </label>
-      <button onClick={() => setUser(null)}>[x]</button>
+      <button onClick={() => setUser(null)}>
+        <FontAwesomeIcon icon={faXmark} />
+      </button>
     </div>
   );
 };
