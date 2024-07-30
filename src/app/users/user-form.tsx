@@ -1,4 +1,5 @@
 import type { User } from "@/models/user";
+import PasswordField from "./password-field";
 
 export interface Props {
   user: User;
@@ -20,12 +21,10 @@ const UserForm = ({ user, setUser }: Props) => {
       </label>
       <label>
         <span className="sr-only">password: </span>
-        <input
-          type="password"
-          placeholder="secret"
+        <PasswordField
           value={user.secret}
           onChange={(e) => setUser({ ...user, secret: e.target.value })}
-          className="bg-transparent placeholder-lime-700"
+          placeholder="secret"
         />
       </label>
       <button onClick={() => setUser(null)}>[x]</button>
