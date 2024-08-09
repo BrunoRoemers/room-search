@@ -18,7 +18,7 @@ const PasswordField = ({ value, onChange, placeholder }: Props) => {
         placeholder={placeholder}
         value={value}
         onChange={onChange}
-        className="bg-transparent placeholder-lime-700"
+        className="bg-transparent placeholder-lime-700 pr-7"
       />
       <button onClick={(e) => setIsVisible(!isVisible)} className="-ml-5">
         <FontAwesomeIcon icon={isVisible ? faEyeSlash : faEye} fixedWidth />
