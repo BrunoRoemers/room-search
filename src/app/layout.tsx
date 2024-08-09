@@ -33,14 +33,6 @@ export default function RootLayout({
             >
               source code
             </a>
-            <span> · </span>
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://app.netlify.com/sites/room-search/deploys"
-            >
-              deploy status
-            </a>
           </div>
         </div>
       </body>
