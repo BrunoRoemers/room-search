@@ -10,7 +10,19 @@ export default class GoogleSheetsListingService implements ListingService {
       range: process.env.SHEET_RANGE,
       valueInputOption: "USER_ENTERED",
       requestBody: {
-        values: [[listing.id, listing.addedBy, listing.url, listing.rating]],
+        values: [
+          [
+            listing.id,
+            listing.addedBy,
+            listing.url,
+            listing.rating,
+            listing.address,
+            listing.rent,
+            listing.costs,
+            listing.bedrooms.length,
+            listing.bathrooms.length,
+          ],
+        ],
       },
     });
     return response;

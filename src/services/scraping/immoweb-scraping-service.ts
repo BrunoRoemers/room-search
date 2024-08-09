@@ -25,6 +25,11 @@ export default class ImmowebScrapingService implements ScrapingService {
     return {
       id: classifiedObject.id.toString(),
       url,
+      address: this.formatAddress(classifiedObject),
+      rent: classifiedObject.transaction.rental.monthlyRentalPrice,
+      costs: classifiedObject.transaction.rental.monthlyRentalCosts,
+      bedrooms: this.formatBedrooms(classifiedObject),
+      bathrooms: this.formatBathrooms(classifiedObject),
     };
   }
 
@@ -63,5 +68,31 @@ export default class ImmowebScrapingService implements ScrapingService {
     }
 
     return ImmowebClassifiedObject.parse(json);
+  }
+
+  private formatAddress(
+    obj: ImmowebClassifiedObject
+  ): ScrapedListing["address"] {
+    return `${obj.property.location.street} ${obj.property.location.number}, ${obj.property.location.postalCode} ${obj.property.location.locality}`;
+  }
+
+  private formatBedrooms(
+    obj: ImmowebClassifiedObject
+  ): ScrapedListing["bedrooms"] {
+    if (obj.property.bedrooms.length !== obj.property.bedroomCount) {
+      return new Array(obj.property.bedroomCount).fill({ surfaceArea: null });
+    }
+
+    return obj.property.bedrooms.map((b) => ({ surfaceArea: b.surface }));
+  }
+
+  private formatBathrooms(
+    obj: ImmowebClassifiedObject
+  ): ScrapedListing["bathrooms"] {
+    if (obj.property.bathrooms.length !== obj.property.bathroomCount) {
+      return new Array(obj.property.bathroomCount).fill({ surfaceArea: null });
+    }
+
+    return obj.property.bathrooms.map((b) => ({ surfaceArea: b.surface }));
   }
 }
