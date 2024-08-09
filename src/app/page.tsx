@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, type KeyboardEvent } from "react";
-import Bookmarklet from "./components/bookmarklet";
-import generateBookmarkletCode from "./utils/generateBookmarkletCode";
+import Bookmarklet from "@/components/bookmarklet";
+import generateBookmarkletCode from "@/utils/generateBookmarkletCode";
 
 const Home = () => {
   const [secret, setSecret] = useState<string | null>(null);
