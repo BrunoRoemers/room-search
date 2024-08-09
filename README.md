@@ -1,36 +1,35 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Room Search
 
-## Getting Started
+> When looking for an apartment, I want to keep track of all the interesting ones, including their details such as price and number of rooms, and show them on a map.
+>
+> The list is kept in Google Sheets and with Google My Maps it can be visualized.
+>
+> The code generates links for one, two and three stars. I add all of them to my bookmarks toolbar. Then I start looking for properties (currently only the immoweb website is supported). When I find one that I want to keep, I rate it by clicking on one of the bookmarks. It runs a little JS on the current page (i.e. the immoweb page) to grab its url and send it to the API endpoint. When NextJS handles the API call, the site is queried again, interesting info is extracted and stored it in the sheet.
 
-First, run the development server:
+## Generate Google Sheets Credentials
+1. Go to https://console.cloud.google.com
+2. Create or select a project
+3. Go to IAM & Admin > Service Accounts
+4. Create a new service account
+   - no need to configure any permissions
+5. Download the `secrets.json` file and add it to the root of this repository. NEVER COMMIT THIS FILE!
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Development
+Create a copy of `example.env.local` and rename it to `.env.local`.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The most important environment variables are explained here:
+- `NEXT_PUBLIC_BASE_URL`: the bookmarklets will use this URL to submit data.
+- `NEXT_PUBLIC_SHEET_ID`: the ID of the Google Sheet to which the data should be written. It's the AAA part in this url: `https://docs.google.com/spreadsheets/d/AAA/edit#gid=BBB`
+- `NEXT_PUBLIC_SHEET_GID`: the GID of the Google Sheet to which the data should be written. It's the BBB part in the url above.
+- `SHEET_RANGE`: the range in which the app is allowed to write.
+- `GOOGLE_APPLICATION_CREDENTIALS`: the path to the JSON file with the Google credentials.
+- `API_USERS_BASE64`: a base64 encoded string containing the users (and their secrets) that can write data. Use the `/users` page to generate this string.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Don't forget to add the `secrets.json` file (see above).
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+When everything is set up, run `npm run dev` to start the development server.
 
-## Learn More
+## Deploy to Netlify or Vercel
+In addition to all the environment variables from `.example.env.local`, you need to add `GOOGLE_APPLICATION_CREDENTIALS_BASE64` to their dashboard.
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+You should set the value to the result of `cat secrets.json | base64`. This way the `prebuild` script in `package.json` can reconstruct the `secrets.json` file for the functions.
