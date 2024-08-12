@@ -16,6 +16,7 @@ export const ScrapedListing = z.object({
       surfaceArea: z.number().nullable(),
     })
   ),
+  availabilityDate: z.date(),
 });
 
 export type ScrapedListing = z.infer<typeof ScrapedListing>;

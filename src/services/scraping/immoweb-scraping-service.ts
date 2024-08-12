@@ -21,7 +21,6 @@ export default class ImmowebScrapingService implements ScrapingService {
 
     const classifiedObject = this.extractClassifiedObject($);
 
-    // TODO: implement scraping
     return {
       id: classifiedObject.id.toString(),
       url,
@@ -30,6 +29,7 @@ export default class ImmowebScrapingService implements ScrapingService {
       costs: classifiedObject.transaction.rental.monthlyRentalCosts,
       bedrooms: this.formatBedrooms(classifiedObject),
       bathrooms: this.formatBathrooms(classifiedObject),
+      availabilityDate: classifiedObject.transaction.availabilityDate,
     };
   }
 

@@ -21,6 +21,7 @@ export default class GoogleSheetsListingService implements ListingService {
             listing.costs,
             listing.bedrooms.length,
             listing.bathrooms.length,
+            listing.availabilityDate.toDateString(),
           ],
         ],
       },
