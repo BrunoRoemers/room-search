@@ -33,6 +33,22 @@ export default class GoogleSheetsListingService implements ListingService {
     ];
   }
 
+  // TODO upsert
+
+  // TODO test
+  private async update(range: string, listing: Listing): Promise<Response> {
+    const sheets = await this.getSheets();
+    // TODO fix
+    return await sheets.spreadsheets.values.append({
+      spreadsheetId: process.env.NEXT_PUBLIC_SHEET_ID,
+      range: `${process.env.SHEET_RANGE}!${range}`,
+      valueInputOption: "USER_ENTERED",
+      requestBody: {
+        values: [this.toRow(listing)],
+      },
+    });
+  }
+
   // add a row to the bottom of the sheet
   private async append(listing: Listing): Promise<Response> {
     const sheets = await this.getSheets();
