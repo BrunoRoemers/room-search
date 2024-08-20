@@ -21,7 +21,7 @@ The most important environment variables are explained here:
 - `NEXT_PUBLIC_BASE_URL`: the bookmarklets will use this URL to submit data.
 - `NEXT_PUBLIC_SHEET_ID`: the ID of the Google Sheet to which the data should be written. It's the AAA part in this url: `https://docs.google.com/spreadsheets/d/AAA/edit#gid=BBB`
 - `NEXT_PUBLIC_SHEET_GID`: the GID of the Google Sheet to which the data should be written. It's the BBB part in the url above.
-- `SHEET_RANGE`: the range in which the app is allowed to write.
+- `SHEET_TAB_NAME`: the name of the tab in which the app is allowed to write.
 - `GOOGLE_APPLICATION_CREDENTIALS`: the path to the JSON file with the Google credentials.
 - `API_USERS_BASE64`: a base64 encoded string containing the users (and their secrets) that can write data. Use the `/users` page to generate this string.
 

@@ -41,7 +41,7 @@ export default class GoogleSheetsListingService implements ListingService {
     // TODO fix
     return await sheets.spreadsheets.values.append({
       spreadsheetId: process.env.NEXT_PUBLIC_SHEET_ID,
-      range: `${process.env.SHEET_RANGE}!${range}`,
+      range: `${process.env.SHEET_TAB_NAME}!${range}`,
       valueInputOption: "USER_ENTERED",
       requestBody: {
         values: [this.toRow(listing)],
@@ -54,7 +54,7 @@ export default class GoogleSheetsListingService implements ListingService {
     const sheets = await this.getSheets();
     return await sheets.spreadsheets.values.append({
       spreadsheetId: process.env.NEXT_PUBLIC_SHEET_ID,
-      range: process.env.SHEET_RANGE,
+      range: process.env.SHEET_TAB_NAME,
       valueInputOption: "USER_ENTERED",
       requestBody: {
         values: [this.toRow(listing)],
