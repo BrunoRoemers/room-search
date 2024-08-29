@@ -17,10 +17,14 @@ export default class GoogleSheetsListingService implements ListingService {
   }
 
   // convert a listing to an array with one value for each column
-  private toRow(listing: Listing) {
+  private toRow(listing: Listing, writeProtectedValues = false) {
+    const now = new Date();
     return [
       listing.id,
-      listing.addedBy,
+      writeProtectedValues ? listing.addedBy : null, // added by
+      writeProtectedValues ? now.toISOString() : null, // added on
+      listing.addedBy, // updated by
+      now.toISOString(), // updated on
       listing.url,
       listing.rating,
       listing.address,
@@ -63,7 +67,7 @@ export default class GoogleSheetsListingService implements ListingService {
       range: process.env.SHEET_TAB_NAME,
       valueInputOption: "USER_ENTERED",
       requestBody: {
-        values: [this.toRow(listing)],
+        values: [this.toRow(listing, true)],
       },
     });
   }
