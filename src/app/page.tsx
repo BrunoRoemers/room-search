@@ -53,6 +53,18 @@ const Home = () => {
               </a>
               .
             </li>
+            <li>
+              Check out this{" "}
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href={`https://www.google.com/maps/d/edit?mid=${process.env.NEXT_PUBLIC_MAP_ID}`}
+                className="underline hover:decoration-wavy"
+              >
+                Google Map
+              </a>
+              .
+            </li>
           </ol>
         </>
       )}

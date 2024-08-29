@@ -24,6 +24,7 @@ The most important environment variables are explained here:
 - `SHEET_TAB_NAME`: the name of the tab in which the app is allowed to write.
 - `GOOGLE_APPLICATION_CREDENTIALS`: the path to the JSON file with the Google credentials.
 - `API_USERS_BASE64`: a base64 encoded string containing the users (and their secrets) that can write data. Use the `/users` page to generate this string.
+- `NEXT_PUBLIC_MAP_ID`: the ID of the Google My Maps that visualizes the Google Sheet.
 
 Don't forget to add the `secrets.json` file (see above).
 
