@@ -94,6 +94,6 @@ export default class GoogleSheetsListingService implements ListingService {
       range: `${process.env.SHEET_TAB_NAME}!${column}${firstRowNr}:${column}`,
       majorDimension: "COLUMNS",
     });
-    return response.data.values[0];
+    return response.data.values?.[0] ?? [];
   }
 }
