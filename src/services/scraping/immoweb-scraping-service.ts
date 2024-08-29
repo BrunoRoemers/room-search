@@ -64,7 +64,7 @@ export default class ImmowebScrapingService implements ScrapingService {
 
     const json = JSON.parse(jsonStr);
     if (process.env.NODE_ENV === "development") {
-      console.log(json);
+      // console.log(json);
     }
 
     return ImmowebClassifiedObject.parse(json);
