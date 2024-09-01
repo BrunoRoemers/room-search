@@ -19,7 +19,7 @@ export const ScrapedListing = z.object({
   availabilityDate: z.date(),
   isUnderOption: z.boolean(),
   isTaken: z.boolean(),
-  phoneNumber: z.string(),
+  phoneNumber: z.string().nullable(),
   email: z.string().email(),
   epcScore: z.string(),
   constructionYear: z.number(),

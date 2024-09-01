@@ -43,7 +43,7 @@ export default class GoogleSheetsListingService implements ListingService {
       /* available from */ listing.availabilityDate.toDateString(),
       /* under option */ listing.isUnderOption,
       /* email */ listing.email,
-      /* phone */ `'${listing.phoneNumber}`,
+      /* phone */ `'${listing.phoneNumber ?? ""}`,
       /* status */ "to contact",
       /* notes */ null,
       /* updated by */ listing.addedBy,

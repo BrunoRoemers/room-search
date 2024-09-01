@@ -51,7 +51,7 @@ export const ImmowebClassifiedObject = z.object({
   customers: z.array(
     z.object({
       email: z.string().email(),
-      phoneNumber: z.string(),
+      phoneNumber: z.string().nullable(),
     })
   ),
 });
