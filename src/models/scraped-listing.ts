@@ -21,6 +21,7 @@ export const ScrapedListing = z.object({
   isTaken: z.boolean(),
   phoneNumber: z.string(),
   email: z.string().email(),
+  epcScore: z.string(),
 });
 
 export type ScrapedListing = z.infer<typeof ScrapedListing>;

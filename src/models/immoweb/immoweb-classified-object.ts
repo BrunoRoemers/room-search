@@ -29,6 +29,9 @@ export const ImmowebClassifiedObject = z.object({
       monthlyRentalPrice: z.number(),
       monthlyRentalCosts: z.number(),
     }),
+    certificates: z.object({
+      epcScore: z.string(),
+    }),
   }),
   flags: z.object({
     isUnderOption: z.boolean(),

@@ -34,6 +34,7 @@ export default class ImmowebScrapingService implements ScrapingService {
       isTaken: classifiedObject.flags.isSoldOrRented,
       email: classifiedObject.customers[0].email,
       phoneNumber: classifiedObject.customers[0].phoneNumber,
+      epcScore: classifiedObject.transaction.certificates.epcScore,
     };
   }
 
