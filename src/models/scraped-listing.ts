@@ -19,6 +19,8 @@ export const ScrapedListing = z.object({
   availabilityDate: z.date(),
   isUnderOption: z.boolean(),
   isTaken: z.boolean(),
+  phoneNumber: z.string(),
+  email: z.string().email(),
 });
 
 export type ScrapedListing = z.infer<typeof ScrapedListing>;

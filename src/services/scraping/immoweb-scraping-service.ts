@@ -32,6 +32,8 @@ export default class ImmowebScrapingService implements ScrapingService {
       availabilityDate: classifiedObject.transaction.availabilityDate,
       isUnderOption: classifiedObject.flags.isUnderOption,
       isTaken: classifiedObject.flags.isSoldOrRented,
+      email: classifiedObject.customers[0].email,
+      phoneNumber: classifiedObject.customers[0].phoneNumber,
     };
   }
 

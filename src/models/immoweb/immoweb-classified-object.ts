@@ -34,6 +34,12 @@ export const ImmowebClassifiedObject = z.object({
     isUnderOption: z.boolean(),
     isSoldOrRented: z.boolean(),
   }),
+  customers: z.array(
+    z.object({
+      email: z.string().email(),
+      phoneNumber: z.string(),
+    })
+  ),
 });
 
 export type ImmowebClassifiedObject = z.infer<typeof ImmowebClassifiedObject>;
