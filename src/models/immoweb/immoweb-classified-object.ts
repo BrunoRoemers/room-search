@@ -30,6 +30,10 @@ export const ImmowebClassifiedObject = z.object({
       monthlyRentalCosts: z.number(),
     }),
   }),
+  flags: z.object({
+    isUnderOption: z.boolean(),
+    isSoldOrRented: z.boolean(),
+  }),
 });
 
 export type ImmowebClassifiedObject = z.infer<typeof ImmowebClassifiedObject>;

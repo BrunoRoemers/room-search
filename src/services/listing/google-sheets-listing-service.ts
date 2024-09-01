@@ -33,6 +33,8 @@ export default class GoogleSheetsListingService implements ListingService {
       listing.bedrooms.length,
       listing.bathrooms.length,
       listing.availabilityDate.toDateString(),
+      listing.isUnderOption,
+      listing.isTaken,
     ];
   }
 
