@@ -1,6 +1,10 @@
 import build from "next/dist/build";
 import { z, type number } from "zod";
 
+const nullableBoolean = z
+  .union([z.boolean(), z.null()])
+  .pipe(z.coerce.boolean());
+
 export const ImmowebClassifiedObject = z.object({
   id: z.number(),
   property: z.object({
@@ -26,8 +30,8 @@ export const ImmowebClassifiedObject = z.object({
     building: z.object({
       constructionYear: z.number(),
     }),
-    hasGarden: z.boolean(),
-    hasTerrace: z.boolean(),
+    hasGarden: nullableBoolean,
+    hasTerrace: nullableBoolean,
   }),
   transaction: z.object({
     type: z.string(),
