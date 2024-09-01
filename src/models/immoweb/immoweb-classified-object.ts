@@ -4,6 +4,7 @@ import { z, type number } from "zod";
 export const ImmowebClassifiedObject = z.object({
   id: z.number(),
   property: z.object({
+    netHabitableSurface: z.number(),
     bedroomCount: z.number(),
     bedrooms: z.array(
       z.object({

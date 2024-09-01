@@ -31,6 +31,7 @@ export default class GoogleSheetsListingService implements ListingService {
       /* correction */ writeProtectedValues ? 0 : null,
       /* total cost */ null, // never write, it's easier to drag the formula manually than to code this
       /* cost per room */ null, // never write, it's easier to drag the formula manually than to code this
+      /* surface area */ listing.netHabitableSurface,
       /* number of bedrooms */ listing.bedrooms.length,
       /* bedroom sizes */ `'${bedroomSizes}`,
       /* number of bathrooms */ listing.bathrooms.length,

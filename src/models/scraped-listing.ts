@@ -23,6 +23,7 @@ export const ScrapedListing = z.object({
   email: z.string().email(),
   epcScore: z.string(),
   constructionYear: z.number(),
+  netHabitableSurface: z.number(),
 });
 
 export type ScrapedListing = z.infer<typeof ScrapedListing>;
