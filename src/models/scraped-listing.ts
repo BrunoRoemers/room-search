@@ -24,6 +24,8 @@ export const ScrapedListing = z.object({
   epcScore: z.string(),
   constructionYear: z.number(),
   netHabitableSurface: z.number(),
+  hasGarden: z.boolean(),
+  hasTerrace: z.boolean(),
 });
 
 export type ScrapedListing = z.infer<typeof ScrapedListing>;

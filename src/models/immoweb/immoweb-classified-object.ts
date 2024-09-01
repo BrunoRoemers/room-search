@@ -26,6 +26,8 @@ export const ImmowebClassifiedObject = z.object({
     building: z.object({
       constructionYear: z.number(),
     }),
+    hasGarden: z.boolean(),
+    hasTerrace: z.boolean(),
   }),
   transaction: z.object({
     type: z.string(),
