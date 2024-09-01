@@ -20,21 +20,24 @@ export default class GoogleSheetsListingService implements ListingService {
   private toRow(listing: Listing, writeProtectedValues = false) {
     const now = new Date();
     return [
-      listing.id,
-      writeProtectedValues ? listing.addedBy : null, // added by
-      writeProtectedValues ? now.toISOString() : null, // added on
-      listing.addedBy, // updated by
-      now.toISOString(), // updated on
-      listing.url,
-      listing.rating,
-      listing.address,
-      listing.rent,
-      listing.costs,
-      listing.bedrooms.length,
-      listing.bathrooms.length,
-      listing.availabilityDate.toDateString(),
-      listing.isUnderOption,
-      listing.isTaken,
+      /* id */ listing.id,
+      /* url */ listing.url,
+      /* address */ listing.address,
+      /* added by */ writeProtectedValues ? listing.addedBy : null,
+      /* stars */ listing.rating,
+      /* rent */ listing.rent,
+      /* charges */ listing.costs,
+      /* correction */ writeProtectedValues ? 0 : null,
+      /* total cost */ null, // never write, it's easier to drag the formula manually than to code this
+      /* cost per room */ null, // never write, it's easier to drag the formula manually than to code this
+      /* number of bedrooms */ listing.bedrooms.length,
+      /* number of bathrooms */ listing.bathrooms.length,
+      /* available from */ listing.availabilityDate.toDateString(),
+      /* under option */ listing.isUnderOption,
+      /* gone */ listing.isTaken,
+      /* updated by */ listing.addedBy,
+      /* updated on */ now.toISOString(),
+      /* added on */ writeProtectedValues ? now.toISOString() : null,
     ];
   }
 
