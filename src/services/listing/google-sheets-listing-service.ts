@@ -19,6 +19,7 @@ export default class GoogleSheetsListingService implements ListingService {
   // convert a listing to an array with one value for each column
   private toRow(listing: Listing, writeProtectedValues = false) {
     const now = new Date();
+    const bedroomSizes = listing.bedrooms.map((b) => b.surfaceArea).join(", ");
     return [
       /* id */ listing.id,
       /* url */ listing.url,
@@ -31,6 +32,7 @@ export default class GoogleSheetsListingService implements ListingService {
       /* total cost */ null, // never write, it's easier to drag the formula manually than to code this
       /* cost per room */ null, // never write, it's easier to drag the formula manually than to code this
       /* number of bedrooms */ listing.bedrooms.length,
+      /* bedroom sizes */ `'${bedroomSizes}`,
       /* number of bathrooms */ listing.bathrooms.length,
       /* available from */ listing.availabilityDate.toDateString(),
       /* under option */ listing.isUnderOption,
