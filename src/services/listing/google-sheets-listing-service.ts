@@ -20,6 +20,7 @@ export default class GoogleSheetsListingService implements ListingService {
   private toRow(listing: Listing, writeProtectedValues = false) {
     const now = new Date();
     const bedroomSizes = listing.bedrooms.map((b) => b.surfaceArea).join(", ");
+    const cellRef = (offset: number) => `indirect("R[0]C[${offset}]",false)`;
     return [
       /* id */ listing.id,
       /* url */ listing.url,
@@ -29,8 +30,8 @@ export default class GoogleSheetsListingService implements ListingService {
       /* rent */ listing.rent,
       /* charges */ listing.costs,
       /* correction */ writeProtectedValues ? 0 : null,
-      /* total cost */ null, // never write, it's easier to drag the formula manually than to code this
-      /* cost per room */ null, // never write, it's easier to drag the formula manually than to code this
+      /* total cost */ `=${cellRef(-1)}+${cellRef(-2)}+${cellRef(-3)}`,
+      /* cost per room */ `=${cellRef(-1)}/${cellRef(2)}`,
       /* surface area */ listing.netHabitableSurface,
       /* number of bedrooms */ listing.bedrooms.length,
       /* bedroom sizes */ `'${bedroomSizes}`,
