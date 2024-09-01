@@ -35,6 +35,7 @@ export default class ImmowebScrapingService implements ScrapingService {
       email: classifiedObject.customers[0].email,
       phoneNumber: classifiedObject.customers[0].phoneNumber,
       epcScore: classifiedObject.transaction.certificates.epcScore,
+      constructionYear: classifiedObject.property.building.constructionYear,
     };
   }
 

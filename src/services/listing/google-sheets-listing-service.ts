@@ -35,6 +35,7 @@ export default class GoogleSheetsListingService implements ListingService {
       /* bedroom sizes */ `'${bedroomSizes}`,
       /* number of bathrooms */ listing.bathrooms.length,
       /* EPC */ listing.epcScore,
+      /* construction year */ listing.constructionYear,
       /* available from */ listing.availabilityDate.toDateString(),
       /* under option */ listing.isUnderOption,
       /* email */ listing.email,

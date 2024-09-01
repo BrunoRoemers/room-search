@@ -1,3 +1,4 @@
+import build from "next/dist/build";
 import { z, type number } from "zod";
 
 export const ImmowebClassifiedObject = z.object({
@@ -20,6 +21,9 @@ export const ImmowebClassifiedObject = z.object({
       postalCode: z.string(),
       street: z.string(),
       number: z.string(),
+    }),
+    building: z.object({
+      constructionYear: z.number(),
     }),
   }),
   transaction: z.object({
