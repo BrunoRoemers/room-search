@@ -22,7 +22,7 @@ export default class ImmowebScrapingService implements ScrapingService {
     const classifiedObject = this.extractClassifiedObject($);
 
     return {
-      id: classifiedObject.id.toString(),
+      id: `immoweb/${classifiedObject.id}`,
       url,
       address: this.formatAddress(classifiedObject),
       rent: classifiedObject.transaction.rental.monthlyRentalPrice,
