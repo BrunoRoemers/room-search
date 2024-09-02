@@ -28,7 +28,7 @@ export const ImmowebClassifiedObject = z.object({
       number: z.string(),
     }),
     building: z.object({
-      constructionYear: z.number(),
+      constructionYear: z.number().nullable(),
     }),
     hasGarden: nullableBoolean,
     hasTerrace: nullableBoolean,

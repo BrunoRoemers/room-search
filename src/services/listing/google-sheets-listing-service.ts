@@ -39,7 +39,7 @@ export default class GoogleSheetsListingService implements ListingService {
       /* garden */ listing.hasGarden,
       /* terrace */ listing.hasTerrace,
       /* EPC */ listing.epcScore,
-      /* construction year */ listing.constructionYear,
+      /* construction year */ listing.constructionYear ?? "",
       /* available from */ listing.availabilityDate.toDateString(),
       /* under option */ listing.isUnderOption,
       /* email */ listing.email,

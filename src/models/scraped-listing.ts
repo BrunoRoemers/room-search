@@ -22,7 +22,7 @@ export const ScrapedListing = z.object({
   phoneNumber: z.string().nullable(),
   email: z.string().email(),
   epcScore: z.string(),
-  constructionYear: z.number(),
+  constructionYear: z.number().nullable(),
   netHabitableSurface: z.number(),
   hasGarden: z.boolean(),
   hasTerrace: z.boolean(),
