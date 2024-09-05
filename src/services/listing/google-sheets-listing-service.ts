@@ -34,7 +34,7 @@ export default class GoogleSheetsListingService implements ListingService {
       /* correction */ writeProtectedValues ? 0 : null,
       /* total cost */ `=${cellRef(-1)}+${cellRef(-2)}+${cellRef(-3)}`,
       /* cost per room */ `=${cellRef(-1)}/${cellRef(2)}`,
-      /* surface area */ listing.netHabitableSurface,
+      /* surface area */ listing.netHabitableSurface ?? "",
       /* number of bedrooms */ listing.bedrooms.length,
       /* bedroom sizes */ `'${bedroomSizes}`,
       /* number of bathrooms */ listing.bathrooms.length,

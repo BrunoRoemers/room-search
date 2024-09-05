@@ -8,7 +8,7 @@ const nullableBoolean = z
 export const ImmowebClassifiedObject = z.object({
   id: z.number(),
   property: z.object({
-    netHabitableSurface: z.number(),
+    netHabitableSurface: z.number().nullable(),
     bedroomCount: z.number(),
     bedrooms: z.array(
       z.object({
