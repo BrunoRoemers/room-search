@@ -40,7 +40,7 @@ export default class GoogleSheetsListingService implements ListingService {
       /* number of bathrooms */ listing.bathrooms.length,
       /* garden */ listing.hasGarden,
       /* terrace */ listing.hasTerrace,
-      /* EPC */ listing.epcScore,
+      /* EPC */ listing.epcScore ?? "",
       /* construction year */ listing.constructionYear ?? "",
       /* available from */ listing.availabilityDate.toDateString(),
       /* under option */ listing.isUnderOption,
