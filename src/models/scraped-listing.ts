@@ -20,7 +20,7 @@ export const ScrapedListing = z.object({
   isUnderOption: z.boolean(),
   isTaken: z.boolean(),
   phoneNumber: z.string().nullable(),
-  email: z.string().email(),
+  email: z.string().email().nullable(),
   epcScore: z.string().nullable(),
   constructionYear: z.number().nullable(),
   netHabitableSurface: z.number().nullable(),

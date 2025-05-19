@@ -1,5 +1,4 @@
-import build from "next/dist/build";
-import { z, type number } from "zod";
+import { z } from "zod";
 
 const nullableBoolean = z
   .union([z.boolean(), z.null()])
@@ -50,7 +49,7 @@ export const ImmowebClassifiedObject = z.object({
   }),
   customers: z.array(
     z.object({
-      email: z.string().email(),
+      email: z.string().email().nullable(),
       phoneNumber: z.string().nullable(),
     })
   ),
