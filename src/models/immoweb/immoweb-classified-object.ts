@@ -14,7 +14,10 @@ export const ImmowebClassifiedObject = z.object({
         surface: z.number(),
       })
     ),
-    bathroomCount: z.number(),
+    bathroomCount: z
+      .number()
+      .nullable()
+      .transform((val) => val ?? 0),
     bathrooms: z.array(
       z.object({
         surface: z.number(),
@@ -26,9 +29,11 @@ export const ImmowebClassifiedObject = z.object({
       street: z.string(),
       number: z.string(),
     }),
-    building: z.object({
-      constructionYear: z.number().nullable(),
-    }),
+    building: z
+      .object({
+        constructionYear: z.number().nullable(),
+      })
+      .nullable(),
     hasGarden: nullableBoolean,
     hasTerrace: nullableBoolean,
   }),

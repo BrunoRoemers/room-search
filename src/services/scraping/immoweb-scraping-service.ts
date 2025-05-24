@@ -1,7 +1,7 @@
 import { ImmowebClassifiedObject } from "@/models/immoweb/immoweb-classified-object";
-import type ScrapingService from "./scraping-service";
 import type { ScrapedListing } from "@/models/scraped-listing";
 import * as cheerio from "cheerio";
+import type ScrapingService from "./scraping-service";
 
 export default class ImmowebScrapingService implements ScrapingService {
   supports(url: string): boolean {
@@ -35,7 +35,8 @@ export default class ImmowebScrapingService implements ScrapingService {
       email: classifiedObject.customers[0].email,
       phoneNumber: classifiedObject.customers[0].phoneNumber,
       epcScore: classifiedObject.transaction.certificates.epcScore,
-      constructionYear: classifiedObject.property.building.constructionYear,
+      constructionYear:
+        classifiedObject.property.building?.constructionYear ?? null,
       netHabitableSurface: classifiedObject.property.netHabitableSurface,
       hasGarden: classifiedObject.property.hasGarden,
       hasTerrace: classifiedObject.property.hasTerrace,
