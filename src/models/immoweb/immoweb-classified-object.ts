@@ -26,8 +26,8 @@ export const ImmowebClassifiedObject = z.object({
     location: z.object({
       locality: z.string(),
       postalCode: z.string(),
-      street: z.string(),
-      number: z.string(),
+      street: z.string().nullable(),
+      number: z.string().nullable(),
     }),
     building: z
       .object({

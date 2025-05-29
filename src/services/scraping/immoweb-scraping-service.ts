@@ -83,6 +83,12 @@ export default class ImmowebScrapingService implements ScrapingService {
   private formatAddress(
     obj: ImmowebClassifiedObject
   ): ScrapedListing["address"] {
+    // NOTE: If the street hasn't been provided, we want to write null to the Google Sheet,
+    //       so we can add an address manually without risk of overwriting it later.
+    if (obj.property.location.street === null) {
+      return null;
+    }
+
     return `${obj.property.location.street} ${obj.property.location.number}, ${obj.property.location.postalCode} ${obj.property.location.locality}`;
   }
 

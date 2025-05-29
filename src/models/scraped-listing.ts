@@ -3,7 +3,7 @@ import { z } from "zod";
 export const ScrapedListing = z.object({
   id: z.string(),
   url: z.string().url(),
-  address: z.string(),
+  address: z.string().nullable(),
   rent: z.number(),
   costs: z.number(),
   bedrooms: z.array(
